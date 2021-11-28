@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/testA.h
+string
+-
+
+/home/julian/Documents/5-github-code/2-JulianLiao/0-cpp_basics/0-cpp_basics_20210830/cmake_basics/testA/src/testA.cpp
+testA.h
+/home/julian/Documents/5-github-code/2-JulianLiao/0-cpp_basics/0-cpp_basics_20210830/cmake_basics/testA/src/testA.h
+iostream
+-
+
