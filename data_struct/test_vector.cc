@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 
+using namespace std;
 
 struct PntIdx {
     size_t x_idx;
@@ -45,6 +46,28 @@ int main(int argc, char** argv) {
 
     int size_a = linePtIdx.end() - linePtIdx.begin();
     std::cout << "size_a: " << size_a << ",  size: " << linePtIdx.size() << std::endl;
+
+
+    /* BEGIN shrink_to_fit */
+    std::vector<int> test_v;
+    cout << "Default-constructed capacity is: " << test_v.capacity() << "\n";
+    test_v.resize(100);
+    cout << "Capacity of a 100-element vector is: " << test_v.capacity() << "\n";
+    test_v.resize(50);
+    cout << "Capacity after resize(50) is: " << test_v.capacity() << "\n";
+    test_v.shrink_to_fit();
+    cout << "Capacity after shrink_to_fit() is: " << test_v.capacity() << "\n";
+    test_v.clear();
+    cout << "Capacity after clear() is: " << test_v.capacity() << "\n";
+    test_v.shrink_to_fit();
+    cout << "Capacity after shrink_to_fit() is: " << test_v.capacity() << "\n";
+    for (int i = 1000; i < 1300; ++i) {
+        test_v.push_back(i);
+    }
+    cout << "Capacity after adding 300 elements is: " << test_v.capacity() << "\n";
+    test_v.shrink_to_fit();
+    cout << "Capacity after shrink_to_fit() is: " << test_v.capacity() << "\n";
+    /* END shrink_to_fit */
 
     return 0;
 }
