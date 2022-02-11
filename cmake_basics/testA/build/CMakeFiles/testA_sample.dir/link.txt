@@ -1,1 +1,0 @@
-/usr/bin/c++ -rdynamic CMakeFiles/testA_sample.dir/src/testA_sample.cpp.o -o testA_sample  libtestA.a 
