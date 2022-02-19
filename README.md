@@ -1,5 +1,20 @@
 # cpp_basics
 
+## 基本语法
+
+### 1. #pragma once
+出现在头文件里的时候，对compiler而言，这个头文件只会被解析一次（parsed once）。
+
+其效果与下面的语法类似，
+```shell
+#ifndef LIBRARY_FILENAME_H
+#define LIBRARY_FILENAME_H
+// contents of the header
+#endif    /* LIBRARY_FILENAME_H */
+```
+
+
+
 ## 数据类型
 
 平台
