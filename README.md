@@ -2,6 +2,44 @@
 
 ## 基本语法
 
+### union
+
+举个例子，
+
+```shell
+首先我定义了下面的结构体，
+
+typedef struct {
+    GenericHeaderForBinaryMsg header_msg;    // 已知GenericHeaderForBinaryMsg占用28字节
+
+    uint32_t sol_status;
+    uint32_t vel_type;
+    float latency;
+    float diff_age;
+    double hor_spd;
+    double trk_gnd;
+    double vert_spd;
+    uint16_t hor_spd_error;
+    uint16_t vert_spd_error;
+    uint32_t crc;
+} UnicorePSRVELMsg;    // 已确定 UnicorePSRVELMsg 占用76字节。
+
+其次，我定义了一个union对象，
+
+typedef union {
+    uint8_t data[76];
+    UnicorePSRVELMsg msg;
+} PSRVELData;
+
+PSRVELData psrvel_data;
+
+需要特别注意，这里的 data数组的长度 必须与 UnicorePSRVELMsg的大小，完全一样。
+
+最后，我只需要给 data赋值，其会自动填充 UnicorePSRVELMsg msg对象中。
+
+memcpy(psrvel_data.data, input_data, 76);    // input_data是输入数据，包含真实的PSRVEL 消息。
+```
+
 ### 1. #pragma once
 出现在头文件里的时候，对compiler而言，这个头文件只会被解析一次（parsed once）。
 
